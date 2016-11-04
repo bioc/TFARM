@@ -8,6 +8,7 @@ Author: Liuba Nausicaa Martino, Alice Parodi, Piercesare Secchi, Stefano Campane
 Maintainer: Liuba Nausicaa Martino <liuban.martino@gmail.com>
 Description: It searches for relevant associations of transcription factors with a transcription factor target, in specific genomic regions. It also allows to evaluate the importance index distribution of transcription factors (and combinations of transcription factors) in association rules.
 License: Artistic-2.0
+biocViews: StatisticalMethod, FeatureExtraction
 Imports: arules, fields, stringr, methods
 LazyData: TRUE
 RoxygenNote: 5.0.1
