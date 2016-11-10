@@ -29,7 +29,7 @@ BiocStyle::latex()
 \newcommand{\bam}{\texttt{BAM}}
 
 \title{\Biocpkg{TFARM}: Transcription Factors Association Rules Miner}
-\author{Liuba Nausicaa Martino \email{liuban.martino@gmail.it}
+\author{Liuba Nausicaa Martino \email{liuban.martino@gmail.com}
 \\Alice Parodi
 \\Piercesare Secchi
 \\Stefano Campaner

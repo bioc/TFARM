@@ -10,5 +10,6 @@ Description: It searches for relevant associations of transcription factors with
 License: Artistic-2.0
 biocViews: StatisticalMethod, FeatureExtraction
 Imports: arules, fields, stringr, methods
+Suggests: plyr
 LazyData: TRUE
 RoxygenNote: 5.0.1

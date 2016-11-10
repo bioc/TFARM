@@ -23,8 +23,10 @@ Given an association rule and a transcription factor \code{TFi}, it is evaluated
 Since this contribution is evaluated based on the variations of support, confidence and lift of the rule, the user can visualize such variations setting the parameter \code{figures = TRUE}.
 }
 \examples{
-# once defined rulesTAF1, rulesTAF1not from
-# rulesTF and rulesNTF, IComp computes the importance of TAF1 = 1
-# IComp("TAF1=1", rulesTAF1, rulesTAF1not, figures=TRUE)
+# Load the data:
+data("data_man")
+
+# The Importance Indexes of FOSL2=1 in the set of rules r_FOSL2 are given by:
+IComp("FOSL2=1", r_FOSL2, r_noFOSL2, figures=TRUE)
 }
 

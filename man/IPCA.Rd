@@ -13,8 +13,18 @@ IPCA(delta_list, IMP)
 }
 \value{
 Variance explained by every principal component (\code{summary}), scores (i.e., the coordinates of data in delta_list in the reference system defined by the principal components) (\code{scores}) and loadings (i.e., the coefficinets of the linear combination that defines each principal component) of every principal component (\code{loadings}). The loadings plot of every principal component is also returned.
+
+ @export
 }
 \description{
 The function is used for a validation of the defined Importance Index. Since it is defined as the linear combination of variations of standardized support, confidence and lift measures, the Principal Component Analysis lets the user evaluate if in the 1D reference system defined by such linear combination, it is possible to describe the variability of the data.
+}
+\examples{
+# Load the data:
+data("data_man")
+
+colnames(I)
+i.pc <- IPCA(DELTA, I)
+names(i.pc)
 }
 

@@ -10,16 +10,16 @@
 #' @param figures logical if \code{figures = TRUE}, graphics with support, lift and confidence distributions of the rules in \code{rules_TF} and \code{rules_noTF} are returned
 #'
 #' @return A list of two elements: the \code{imp} element is a vector of integers with the importances of TFi in each rule in \code{rules_TF}; the \code{delta} element of the list is a list with variations of standardized distributions of the three measures of support, confidence and lift. This output is used in the function \code{\link{IPCA}} for the Principal Component Analysis of such distributions.
-#' @examples
-#' # once defined rulesTAF1, rulesTAF1not from
-#' # rulesTF and rulesNTF, IComp computes the importance of TAF1 = 1
-#' # IComp("TAF1=1", rulesTAF1, rulesTAF1not, figures=TRUE)
 #' @export
 #'
+#' @examples
+#' # Load the data:
+#' data("data_man")
+#'
+#' # The Importance Indexes of FOSL2=1 in the set of rules r_FOSL2 are given by:
+#' IComp("FOSL2=1", r_FOSL2, r_noFOSL2, figures=TRUE)
 
 IComp <- function(TFi, rules_TF, rules_noTF, figures){
-  #TFi_0 <- lapply(items(TFi), function(x){return(paste(x,"1",sep="="))})
-  #if(length(TFi_1) == 1) {TFi <- TFi}
   if(length(TFi) > 1) {
     TFi <- TFi[[1]]
     for (i in 2:length(TFi))
@@ -35,16 +35,18 @@ IComp <- function(TFi, rules_TF, rules_noTF, figures){
                   Z[,c(8,9,10)] <- 0
               }
               else if (var(both[,i]) == 0) Z[,i] <- both[,i]
+              # standardization of the measures
               else  Z[,i] <- (both[,i]-mean(both[,i]))/(sqrt(var(both[,i])))
           }
       }
+    # matrix of variations of the standardized measures
     Z <- data.frame(Z)
     colnames(Z) <- colnames(both)
     diff_supp_Z <- abs((Z[,3])-(Z[,8]))
-    # check:
     diff_conf_Z <- abs((Z[,4])-(Z[,9]))
     diff_lift_Z <- abs((Z[,5])-(Z[,10]))
     diffs_Z <- data.frame(Z[,1], Z[,6], diff_supp_Z, diff_conf_Z, diff_lift_Z)
+    # evaluation of the Importance Index of TF in each rule
     imp_Z_rule <- apply(diffs_Z[,3:5], 1, sum)
     m <- max(Z[,5])
     n <- dim(Z)[1]
@@ -54,11 +56,9 @@ IComp <- function(TFi, rules_TF, rules_noTF, figures){
       matplot(both[,c(3,8)], type='l', lwd=2, ylab='support', xlab='rules ID',ylim=c(0,1))
       legend('topright', c(paste('with',TFi),paste('without',TFi)), col=c('black','red'), lty=c(1,2),lwd=c(2,2))
       title(main='Rules support distribution')
-      #plot.new()
       matplot(both[,c(4,9)], type='l', lwd=2, ylab='confidence', xlab='rules ID', ylim=c(0,1))
       title(main='Rules confidence distribution')
       legend('topright', c(paste('with',TFi),paste('without',TFi)), col=c('black','red'), lty=c(1,2),lwd=c(2,2))
-      #plot.new()
       matplot(both[,c(5,10)], type='l', lwd=2, ylab='lift', xlab='rules ID', ylim=c(0,m+5))
       title(main='Rules lift distribution')
       legend('topright', c(paste('with',TFi),paste('without',TFi)), col=c('black','red'), lty=c(1,2),lwd=c(2,2))

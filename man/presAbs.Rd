@@ -19,4 +19,19 @@ A list of two string vectors: the list \code{pres} contains all the transcriptio
 \description{
 The function is used to find candidate co-regulator transcription factors with a given transcription factor, by finding the transcription factors that contribute to the prediction of its presence in a set of association rules.
 }
+\examples{
+# Load the data:
+data("data_man")
+data("MCF7_chr1")
+
+# Transcription factors present in at least one of the regions in the considered dataset:
+m <- dim(MCF7_chr1)[2]
+c <- colnames(MCF7_chr1)[2:m]
+
+names(presAbs(c, r_TEAD4, TRUE))
+
+# Transcription factors present in at least one of the association rules:
+p <- presAbs(c, r_TEAD4, TRUE)$pres
+p
+}
 

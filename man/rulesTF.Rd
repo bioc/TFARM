@@ -19,4 +19,11 @@ A data.frame with association rules containing \code{TFi} in their left-hand-sid
 \description{
 From a set of relevant association rules, only the ones containing \code{TFi} in their left hand side are subsetted, together with their quality measures of support, confidence and lift. The function is then used for the evaluation of the importance distribution of \code{TFi}.
 }
+\examples{
+# Load the data:
+data("data_man")
+
+r_FOSL2 <- rulesTF("FOSL2=1", r_TEAD4, verbose=FALSE)
+
+}
 

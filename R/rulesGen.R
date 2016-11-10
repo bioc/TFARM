@@ -13,9 +13,15 @@
 #' @import arules
 #'
 #' @examples
+#' # Load the dataset:
+#' data("MCF7_chr1")
+#'
 #' # To extract association rules from data, with TEAD4=1 in the left-hand-side and
 #' # support greater than 0.2 and confidence greater than 0.8:
 #' # r.TEAD4 <- rulesGen(data, "TEAD4=1", minsupp=0.2, minconf=0.8, type = TRUE)
+#'
+#' m <- dim(MCF7_chr1)[2]
+#' r_TEAD4 <- rulesGen(MCF7_chr1[,2:m], "TEAD4=1", 0.005, 0.62, TRUE)
 #'
 #' @seealso \link[arules]{apriori}
 rulesGen <- function(data, TF, minsupp, minconf, type){
@@ -30,8 +36,6 @@ rulesGen <- function(data, TF, minsupp, minconf, type){
   }
   trans <- as(data.f, "transactions")
   names <- colnames(data.f)
-  #TF_0 <- paste(TF,"0",sep="=")
-  #TF_1 <- paste(TF,"1",sep="=")
   TF_a <- unlist(strsplit(TF,'='))[1]
   TF_1 <- paste(TF_a, "1", sep="=")
   names_1 <- unlist(sapply(names, function(x){paste(x,"1", sep="=")}))

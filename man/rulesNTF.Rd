@@ -20,4 +20,11 @@ a data.frame with all the rules in the set \code{rules} without the transcriptio
 The function removes a given transcription factor \code{TFi} (or a combination of transcription factors) chosen by the user, from the subset of relevant association rules extracted with the function \code{\link{rulesTF}}. Then it searches for the obtained rules and their quality measures of support, confidence and lift
 in the set of most relevant associations extracted with the function \code{\link{rulesGen}}. If a rule is not found in such set, its quality measures are set to 0.
 }
+\examples{
+# Load the data:
+data("data_man")
+
+r_noFOSL2 <- rulesNTF("FOSL2=1", r_FOSL2, r_TEAD4)
+
+}
 

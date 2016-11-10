@@ -16,4 +16,12 @@ A square matrix (TFs x TFs) is built. The element (i,j) of such matrix contains 
 the couple of transcription factors (TFi, TFj). This is rapresented in a heatmap visualization in which the scale color from red (dark) to white (light) indicates
 low mean importance of the couple (red), or high mean importance of the couple (white).
 }
+\examples{
+# Load the data:
+data("data_man")
+
+# Heatmap visualization of the mean importances of transcription factors in p
+# and their combinations in two elements:
+heatI(p, I_c_2)
+}
 

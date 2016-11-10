@@ -9,10 +9,14 @@
 #'
 #' @return a data.frame with all the rules in the set \code{rules} without the transcription factor (or combination of transcription factors) in \code{TFi}, and their quality measures of support, confidence and lift.
 #' @export
+#' @examples
+#' # Load the data:
+#' data("data_man")
+#'
+#' r_noFOSL2 <- rulesNTF("FOSL2=1", r_FOSL2, r_TEAD4)
 #'
 
 rulesNTF <- function(TFi, sub_rules, all_rules){
-  #TFi <- lapply(items(TF_i), function(x){return(paste(x,"1",sep="="))})
   if(length(TFi) == 1) {TF_i <- TFi}
   if(length(TFi) > 1) {
     TF_i <- TFi[[1]]

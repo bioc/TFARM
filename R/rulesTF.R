@@ -9,8 +9,13 @@
 #' @return A data.frame with association rules containing \code{TFi} in their left-hand-side, and with their quality measures of support, confidence and lift.
 #' @export
 #'
+#' @examples
+#' # Load the data:
+#' data("data_man")
+#'
+#' r_FOSL2 <- rulesTF("FOSL2=1", r_TEAD4, verbose=FALSE)
+#'
 rulesTF <- function(TFi, rules, verbose){
-  #TFi <- lapply(items(TF_i), function(x){return(paste(x,"1",sep="="))})
   if(length(TFi) == 1) {TF_i <- TFi}
   if(length(TFi) > 1) {
     TF_i <- TFi[[1]]
@@ -22,8 +27,6 @@ rulesTF <- function(TFi, rules, verbose){
     if ( all(items(TF_i) %in% items(rules$lhs[i])) )
       rules_subs <- cbind(rules_subs, paste(rules$lhs[i]))
   }
-  ## apply() + function
-
   if (length(rules_subs) == 0) {
       if (verbose == 'TRUE') {
     print(paste('None of the rules contains', TF_i, sep=' '))
@@ -31,7 +34,7 @@ rulesTF <- function(TFi, rules, verbose){
       else if (verbose =='FALSE') (return(NA))
   }
 
-  else {  #loof for quality measures of the rule
+  else {
     n_subs <- length(rules_subs)
     n_all <- dim(rules)[1]
     all_TF <- matrix(0, n_subs, 5)

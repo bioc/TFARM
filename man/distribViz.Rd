@@ -17,12 +17,10 @@ For a set of candidate co-regulator transcription factors, the Importance Index 
  the distribution (the higher is the variability of the importance index distribution, the longer is a boxplot). Moreover, The higher is the median of the Importance Index distribution for a candidate co-regulator transcription factor, the higher the boxplot is aligned with respect to the y axis.
 }
 \examples{
-# To visualize the Importance Index distribution of TCF12=1, TAF1=1 and EP300=1:
-# TFs <- c("TCF12=1", "TAF1=1", "EP300=1")
-# IMP_TCF12 <- IComp("TCF12=1", rules_TCF12, rules_noTCF12, figures=FALSE)
-# IMP_TAF1 <- IComp("TAF=1", rules_TAF1, rules_noTAF1, figures=FALSE)
-# IMP_EP300 <- IComp("EP300=1", rules_EP300, rules_noEP300, figures=FALSE)
-# IMP <- list(IMP_TCF12, IMP_TAF1, IMP_EP300)
-# distribViz(IMP, TFs)
+# Load the data:
+data("data_man")
+
+# Plot the Importance Index distributions of transcription factors in p:
+distribViz(IMP_Z,p)
 }
 

@@ -7,17 +7,14 @@
 #' @param I a list of importance distributions
 #' @param TFs string vector with the names of the transcription factors whose importance distributions are in I
 #'
-#' @examples
-#' # To visualize the Importance Index distribution of TCF12=1, TAF1=1 and EP300=1:
-#' # TFs <- c("TCF12=1", "TAF1=1", "EP300=1")
-#' # IMP_TCF12 <- IComp("TCF12=1", rules_TCF12, rules_noTCF12, figures=FALSE)
-#' # IMP_TAF1 <- IComp("TAF=1", rules_TAF1, rules_noTAF1, figures=FALSE)
-#' # IMP_EP300 <- IComp("EP300=1", rules_EP300, rules_noEP300, figures=FALSE)
-#' # IMP <- list(IMP_TCF12, IMP_TAF1, IMP_EP300)
-#' # distribViz(IMP, TFs)
 #' @export
 #'
+#' @examples
+#' # Load the data:
+#' data("data_man")
 #'
+#' # Plot the Importance Index distributions of transcription factors in p:
+#' distribViz(IMP_Z,p)
 
 distribViz = function(I,TFs){
   lungh <- sapply(I, function(x){length(x)})
