@@ -2,29 +2,44 @@
 % Please edit documentation in R/IPCA.R
 \name{IPCA}
 \alias{IPCA}
-\title{Principal Components Analysis for distributions of variations of support, confidence and lift obtained removing a transcription factor from a set of rules}
+\title{Principal Components Analysis for distributions of variations of support,
+confidence and lift obtained removing a transcription factor
+from a set of rules.}
 \usage{
 IPCA(delta_list, IMP)
 }
 \arguments{
-\item{delta_list}{list of variations of standardized distributions of support, confidence and lift measures, obtained using the \code{IComp}.}
+\item{delta_list}{list of variations of standardized distributions
+of support, confidence and lift measures, obtained using the \code{IComp}.}
 
-\item{IMP}{the importance matrix with the mean Importance of every candidate co-regulator transcription factors and the number of rules in which each of them appears.}
+\item{IMP}{the importance matrix with the mean Importance Index
+of every candidate co-regulator transcription factor and the number of rules
+in which each of them appears.}
 }
 \value{
-Variance explained by every principal component (\code{summary}), scores (i.e., the coordinates of data in delta_list in the reference system defined by the principal components) (\code{scores}) and loadings (i.e., the coefficinets of the linear combination that defines each principal component) of every principal component (\code{loadings}). The loadings plot of every principal component is also returned.
-
- @export
+Variance explained by every principal component (\code{summary}),
+scores (i.e., the coordinates) of data in delta_list in the reference system
+defined by the principal components (\code{scores}) and loadings
+(i.e., the coefficinets) of the linear combination that defines
+each principal component (\code{loadings}).
+The plots of the variability, the cumulate percentage of variance explained
+by each principal component and loadings of every principal component are
+also returned.
 }
 \description{
-The function is used for a validation of the defined Importance Index. Since it is defined as the linear combination of variations of standardized support, confidence and lift measures, the Principal Component Analysis lets the user evaluate if in the 1D reference system defined by such linear combination, it is possible to describe the variability of the data.
+The function is used for validation of the defined Importance Index.
+It is defined as the linear combination of variations of
+standardized support, confidence and lift measures.
+The Principal Component Analysis lets the user evaluate
+if in the 1D reference system defined by such linear combination,
+it is possible to describe the variability of the data.
 }
 \examples{
-# Load the data:
+# Load IMP, DELTA and I from the data:man collection of datasets:
 data("data_man")
 
-colnames(I)
+colnames(IMP)
+I <- data.frame(IMP$TF, IMP$imp, IMP$nrules)
 i.pc <- IPCA(DELTA, I)
 names(i.pc)
 }
-

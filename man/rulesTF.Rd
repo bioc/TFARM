@@ -2,28 +2,35 @@
 % Please edit documentation in R/rulesTF.R
 \name{rulesTF}
 \alias{rulesTF}
-\title{Extracts a subset of rules that contain a certain transcription factor (or a combination of transcription factors) in their left-hand-side.}
+\title{Extracts a subset of rules that contain a certain transcription factor
+(or a combination of transcription factors) in their left-hand-side.}
 \usage{
 rulesTF(TFi, rules, verbose)
 }
 \arguments{
-\item{TFi}{a string with the name of the transcription factor (or combination of transcription factors) wanted in the left-hand-side of the rules to find}
+\item{TFi}{a string with the name of the transcription factor (or combination
+of transcription factors) wanted in the left-hand-side of the rules to find.}
 
-\item{rules}{a data.frame with association rules and their quality measures of support, confidence and lift}
+\item{rules}{a data.frame with association rules and their quality measures
+of support, confidence and lift.}
 
-\item{verbose}{a logical parameter. If \code{verbose = TRUE}, a console message warns the user when the set of rules containing \code{TFi} is empty.}
+\item{verbose}{a logical parameter. If \code{verbose = TRUE}, a console
+message warns the user when the set of rules containing \code{TFi} is empty.}
 }
 \value{
-A data.frame with association rules containing \code{TFi} in their left-hand-side, and with their quality measures of support, confidence and lift.
+A data.frame with association rules containing \code{TFi} in their
+left-hand-side, with their quality measures of support, confidence and lift.
 }
 \description{
-From a set of relevant association rules, only the ones containing \code{TFi} in their left hand side are subsetted, together with their quality measures of support, confidence and lift. The function is then used for the evaluation of the importance distribution of \code{TFi}.
+From a set of relevant association rules, only the ones containing \code{TFi}
+in their left-hand-side are subsetted, together with their quality measures
+of support, confidence and lift. The function is then used for the evaluation
+of the importance distribution of \code{TFi}.
 }
 \examples{
-# Load the data:
+# Load r_TEAD4 from the data_man collection of datasets:
 data("data_man")
 
 r_FOSL2 <- rulesTF("FOSL2=1", r_TEAD4, verbose=FALSE)
 
 }
-

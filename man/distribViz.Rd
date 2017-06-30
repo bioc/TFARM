@@ -2,25 +2,36 @@
 % Please edit documentation in R/distribViz.R
 \name{distribViz}
 \alias{distribViz}
-\title{Visualizes with boxplots the importance index distribution of a set of transcription factors.}
+\title{Visualizes with boxplots the Importance Index distribution
+of a set of transcription factors.}
 \usage{
 distribViz(I, TFs)
 }
 \arguments{
-\item{I}{a list of importance distributions}
+\item{I}{a list of Importance Index distributions (IIDs)}
 
-\item{TFs}{string vector with the names of the transcription factors whose importance distributions are in I}
+\item{TFs}{string vector with the names of the transcription factors}
+}
+\value{
+A boxplot representing the transcription factor IIDs
 }
 \description{
-For a set of candidate co-regulator transcription factors, the Importance Index distribution of each transcription factor is plotted in boxplots.
- The shape of every boxplot depends on: the dimension of the distribution, which is equal to the number of rules in which every transcription factor appear (the higher is such number, the larger is a boxplot), the variability of
- the distribution (the higher is the variability of the importance index distribution, the longer is a boxplot). Moreover, The higher is the median of the Importance Index distribution for a candidate co-regulator transcription factor, the higher the boxplot is aligned with respect to the y axis.
+For a set of candidate co-regulator transcription factors,
+ the Importance Index distribution of each transcription factor
+ is plotted in boxplots. The shape of every boxplot depends on:
+ the dimension of the distribution, which is equal to the number of rules
+ in which every transcription factor appears (the higher is such number,
+ the larger is a boxplot), the variability of the distribution
+ (the higher is the variability of the Importance Index distribution,
+ the longer is a boxplot). Moreover, the higher is the median of
+ the Importance Index distribution for a candidate co-regulator
+ transcription factor, the higher the boxplot is aligned with respect to
+ the y axis.
 }
 \examples{
-# Load the data:
+# Load IMP_Z and p from the data_man collection of datasets:
 data("data_man")
 
-# Plot the Importance Index distributions of transcription factors in p:
+# Plot the Importance Index distributions of the transcription factors in p:
 distribViz(IMP_Z,p)
 }
-

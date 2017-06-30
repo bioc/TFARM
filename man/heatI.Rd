@@ -2,26 +2,32 @@
 % Please edit documentation in R/heatI.R
 \name{heatI}
 \alias{heatI}
-\title{Generates an heatmap visualization of the mean importances of pairs of transcription factors.}
+\title{Generates an heatmap visualization of the mean Importance Index
+of pairs of transcription factors.}
 \usage{
 heatI(TFs, I)
 }
 \arguments{
-\item{TFs}{a string vector with names of transcription factors}
+\item{TFs}{a string vector with names of transcription factors.}
 
-\item{I}{a vector of mean importances of pairs of transcription factors in TFs}
+\item{I}{a vector of mean II of pairs of transcription factors in TFs.}
+}
+\value{
+The Importance index of pairs of Transcription Factors as a heatmap
 }
 \description{
-A square matrix (TFs x TFs) is built. The element (i,j) of such matrix contains the mean Importance Index of
-the couple of transcription factors (TFi, TFj). This is rapresented in a heatmap visualization in which the scale color from red (dark) to white (light) indicates
-low mean importance of the couple (red), or high mean importance of the couple (white).
+A square matrix (TFs x TFs) is built. The element (i,j) of such matrix
+contains the mean Importance Index (II) of the couple of transcription
+factors (TFi, TFj). This is rapresented in a heatmap visualization in
+which the scale color from red (dark) to white (light) indicates low mean
+importance of the couple (red), or high mean importance of the
+couple (white).
 }
 \examples{
-# Load the data:
+# Load p and I_c_2 from the data_man collection of datasets:
 data("data_man")
 
 # Heatmap visualization of the mean importances of transcription factors in p
 # and their combinations in two elements:
 heatI(p, I_c_2)
 }
-

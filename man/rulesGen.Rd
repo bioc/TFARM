@@ -7,36 +7,52 @@
 rulesGen(data, TF, minsupp, minconf, type)
 }
 \arguments{
-\item{data}{a binary matrix or data frame}
+\item{data}{a GRanges object in which the metadata columns contain
+the Indicator of presence matrix i.e., a matrix with 1 and 0 values
+representing presence or absence, respectively (in case other values
+different from 0 are present, all of them are considered as representing
+presence).}
 
-\item{TF}{a string with the name of the trancription factor wanted in the right-hand-side of the extracted rules}
+\item{TF}{a string with the name of the trancription factor wanted
+in the right-hand-side of the extracted rules.}
 
-\item{minsupp}{an integer, the minimal support of the extracted rules}
+\item{minsupp}{an integer, the minimal support of the extracted rules.}
 
-\item{minconf}{an integer, the minimal confidence of the extracted rules}
+\item{minconf}{an integer, the minimal confidence of the extracted rules.}
 
-\item{type}{a logical parameter; if \code{type = TRUE} only rules with present transcription factor in the left-hand-side are extracted (i.e., the left-hand-side of the extracted rules is of the type {TF1=1, TF2=1, TF3=1}). If \code{type = FALSE} also rules with absent transcription factors in the left-hand-side are extracted (i.e., the left-hand-side of the extracted rules can be of the type {TF1=1, TF2=0, TF3=1} or {TF1=0, TF2=0, TF3=0}).}
+\item{type}{a logical parameter; if \code{type = TRUE}, only rules with
+all present transcription factor in the left-hand-side are extracted
+(i.e., the left-hand-side of the extracted rules is of the
+type {TF1=1, TF2=1, TF3=1}). If \code{type = FALSE}, also rules with absent
+transcription factors in the left-hand-side are extracted
+(i.e., the left-hand-side of the extracted rules can be of the type
+{TF1=1, TF2=0, TF3=1} or {TF1=0, TF2=0, TF3=0}).}
 }
 \value{
-A data frame with the association rules extracted and their quality measures of support, confidence and lift.
+A data frame with the association rules extracted and their
+ quality measures of support, confidence and lift.
 }
 \description{
-From the dataset in \code{data}, the function extracts a set of association rules, with a certain item in the right-hand-side. Each rule extracted has support greater than \code{minsupp} and confidence greater than \code{minconf}. The extraction is made using the \link[arules]{apriori} function implemented in the \code{arules} package.
-\code{minsupp} and \code{minconf} thresholds are set by the user in order to extract a limited number of most relevant association rules.
+From the dataset in \code{data}, the function extracts a set of association
+rules, with a certain item in their right-hand-side. Each rule extracted has
+support greater than \code{minsupp} and confidence greater than
+\code{minconf}. The extraction is made using the \link[arules]{apriori}
+function implemented in the \code{arules} package.
+\code{minsupp} and \code{minconf} thresholds are set by the user in order
+to extract a limited number of most relevant association rules.
 }
 \examples{
 # Load the dataset:
 data("MCF7_chr1")
 
-# To extract association rules from data, with TEAD4=1 in the left-hand-side and
-# support greater than 0.2 and confidence greater than 0.8:
-# r.TEAD4 <- rulesGen(data, "TEAD4=1", minsupp=0.2, minconf=0.8, type = TRUE)
+# To extract association rules from data, with TEAD4=1 in the right-hand-side
+# and support greater than 0.005 and confidence greater than 0.62:
+# r_TEAD4 <- rulesGen(data, "TEAD4=1", minsupp=0.005, minconf=0.62,
+#                     type=TRUE)
 
-m <- dim(MCF7_chr1)[2]
-r_TEAD4 <- rulesGen(MCF7_chr1[,2:m], "TEAD4=1", 0.005, 0.62, TRUE)
+r_TEAD4 <- rulesGen(MCF7_chr1, "TEAD4=1", 0.005, 0.62, TRUE)
 
 }
 \seealso{
 \link[arules]{apriori}
 }
-

@@ -2,31 +2,44 @@
 % Please edit documentation in R/presAbs.R
 \name{presAbs}
 \alias{presAbs}
-\title{Splits a set of transcription factors in 'present' or 'absent' transcription factors in a set of rules.}
+\title{Splits a set of transcription factors in 'present' or 'absent'
+transcription factors in a set of rules.}
 \usage{
 presAbs(TFs, rules, type)
 }
 \arguments{
-\item{TFs}{a string vector: set of transcription factors to search in the set of rules.}
+\item{TFs}{a string vector: set of transcription factors to check their
+presence (TF=1) or absence (TF=0) in the set of rules.}
 
-\item{rules}{data.frame: rules and their quality measures (support, confidence and lift).}
+\item{rules}{data.frame: rules and their quality measures.}
 
-\item{type}{logical parameter: if \code{type = TRUE} only rules with present transcription factors in the left-hand-side are considered.}
+\item{type}{logical parameter: if \code{type = TRUE}, only rules with
+all present transcription factors in the left-hand-side are considered
+(i.e., the left-hand-side of the extracted rules is for example
+TF1=1, TF2=1, TF3=1).}
 }
 \value{
-A list of two string vectors: the list \code{pres} contains all the transcription factors in \code{TFs} that are present in \code{rules}, and the list \code{abs} contains all the transcription factors in \code{TFs} that are absent in \code{rules}.
+A list of two string vectors: the list \code{pres} contains
+all the transcription factors in \code{TFs} that are present in \code{rules},
+and the list \code{abs} contains all the transcription factors in \code{TFs}
+that are absent in \code{rules}.
 }
 \description{
-The function is used to find candidate co-regulator transcription factors with a given transcription factor, by finding the transcription factors that contribute to the prediction of its presence in a set of association rules.
+The function is used to find candidate transcription factor co-regulator
+with a given transcription factor, by finding the transcription factors that
+contribute to the prediction of the given trascription factor presence in a
+set of association rules.
 }
 \examples{
-# Load the data:
+library(GenomicRanges)
+# Load r_TEAD4 from the data_man collection of datasets:
 data("data_man")
+# Load MCF7_chr1:
 data("MCF7_chr1")
 
-# Transcription factors present in at least one of the regions in the considered dataset:
-m <- dim(MCF7_chr1)[2]
-c <- colnames(MCF7_chr1)[2:m]
+# Transcription factors present in at least one of the regions
+# in the considered dataset:
+c <- names(elementMetadata(MCF7_chr1))
 
 names(presAbs(c, r_TEAD4, TRUE))
 
@@ -34,4 +47,3 @@ names(presAbs(c, r_TEAD4, TRUE))
 p <- presAbs(c, r_TEAD4, TRUE)$pres
 p
 }
-

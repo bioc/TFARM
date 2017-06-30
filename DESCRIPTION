@@ -2,14 +2,21 @@ Package: TFARM
 Type: Package
 Title: Transcription Factors Association Rules Miner
 Version: 0.99.1
-Date: 2016-11-02
-Depends: R (>= 3.2)
-Author: Liuba Nausicaa Martino, Alice Parodi, Piercesare Secchi, Stefano Campaner, Marco Masseroli
+Date: 2017-06-21
+Depends: R (>= 3.4)
+Author: Liuba Nausicaa Martino, Alice Parodi, Gaia Ceddia, Piercesare Secchi, Stefano Campaner, Marco Masseroli 
 Maintainer: Liuba Nausicaa Martino <liuban.martino@gmail.com>
-Description: It searches for relevant associations of transcription factors with a transcription factor target, in specific genomic regions. It also allows to evaluate the importance index distribution of transcription factors (and combinations of transcription factors) in association rules.
+Description: It searches for relevant associations of transcription factors with
+  a transcription factor target, in specific genomic regions.
+  It also allows to evaluate the Importance Index distribution of transcription
+  factors (and combinations of transcription factors) in association rules.
 License: Artistic-2.0
-biocViews: StatisticalMethod, FeatureExtraction
-Imports: arules, fields, stringr, methods
-Suggests: plyr
+Imports: arules, fields, GenomicRanges, graphics, grDevices, stringr,
+        methods, stats
+Suggests: plyr, BiocStyle
+biocViews: BiologicalQuestion, Infrastructure, StatisticalMethod,
+        Transcription
 LazyData: TRUE
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1
+NeedsCompilation: no
+Packaged: 2017-06-28 09:17:04 UTC; gaiac

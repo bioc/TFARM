@@ -2,7 +2,7 @@
 % Please edit documentation in R/items.R
 \name{items}
 \alias{items}
-\title{Extracts items in the left-hand-side of an association rule}
+\title{Extracts items in the left-hand-side of an association rule.}
 \usage{
 items(itemset)
 }
@@ -10,13 +10,14 @@ items(itemset)
 \item{itemset}{object of class rules.}
 }
 \value{
-A string vector with the items in the left-hand-side of the rule in itemset.
+A string vector with the items in the left-hand-side
+of the rule in itemset.
 }
 \description{
-The function is used in the elaboration of the left-hand-side of association rules to search for the items.
+The function is used in the elaboration of the left-hand-side of
+association rules to search for the items.
 }
 \examples{
-items("{TAF1=1,EP300=1,TAF1=1}")
-# the output is: "TAF1=1","EP300=1","TAF1=1"
+items("{TAF1=1,EP300=1,MAX=1}")
+# the output is: "TAF1=1","EP300=1","MAX=1"
 }
-
