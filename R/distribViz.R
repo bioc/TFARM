@@ -28,7 +28,7 @@
 #' distribViz(IMP_Z,p)
 
 distribViz <- function(I,TFs){
-    lungh <- sapply(I, function(x){length(x)})
+    lungh <- lengths(I)
     ll = unlist(I)
     df <- data.frame(importance=ll, TF=rep(TFs,lungh))
     bp<-boxplot(df$importance ~ df$TF, varwidth =TRUE, par(mar = c(8, 3, 3, 1)),
