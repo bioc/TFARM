@@ -18,35 +18,29 @@
 #' @importFrom graphics par axis title
 #' @examples
 #' # Load p and I_c_2 from the data_man collection of datasets:
-#' data("data_man")
+#' data('data_man')
 #'
 #' # Heatmap visualization of the mean importances of transcription factors in p
 #' # and their combinations in two elements:
 #' heatI(p, I_c_2)
 
 heatI <- function(TFs, I) {
-    l <- length(TFs)
     estract <- function(x) {
-        vec <- rep(0, length(TFs))
-        for (i in 1:length(vec)) {
-            vec[i] <- gregexpr(TFs[i], x)[[1]][1] != -1
-        }
+        vec <- vapply(TFs, function(TFs) gregexpr(TFs, x)[[1]][1] != -1, 
+            numeric(1))
         return(vec)
     }
-    aa = t(sapply(I[, 1], estract))
+    l <- length(TFs)
+    aa <- t(sapply(I[, 1], estract))
     matrix_imp <- matrix(0, l, l)
-    for (i in 1:dim(aa)[1]) {
-        pos = rep(NA, 2)
-        pos[1] <- which(aa[i, ] == 1)[1]
-        pos[2] <- which(aa[i, ] == 1)[2]
-        if (is.na(pos[2])) {
-            matrix_imp[pos[1], pos[1]] = I[i, ]$imp
-        }
-        if (!is.na(pos[2])) {
-            matrix_imp[pos[1], pos[2]] = I[i, ]$imp
-            matrix_imp[pos[2], pos[1]] = I[i, ]$imp
-        }
-    }
+    pos <- apply(aa == 1, 1, function(x) which(x)[1:2])
+    matrix_imp[cbind(pos[1, which(is.na(pos[2, ]))], pos[1, which(is.na(pos[2, 
+        ]))])] <- I[which(is.na(pos[2, ])), "imp"]
+    matrix_imp[cbind(pos[1, which(!is.na(pos[2, ]))], pos[2, which(!is.na(pos[2, 
+        ]))])] <- I[which(!is.na(pos[2, ])), "imp"]
+    matrix_imp[cbind(pos[2, which(!is.na(pos[2, ]))], pos[1, which(!is.na(pos[2, 
+        ]))])] <- I[which(!is.na(pos[2, ])), "imp"]
+    
     rownames(matrix_imp) = TFs
     colnames(matrix_imp) = TFs
     par(mar = c(7, 7, 4, 10))
