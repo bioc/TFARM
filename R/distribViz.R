@@ -22,17 +22,19 @@
 #'
 #' @examples
 #' # Load IMP_Z and p from the data_man collection of datasets:
-#' data("data_man")
+#' data('data_man')
 #'
 #' # Plot the Importance Index distributions of the transcription factors in p:
 #' distribViz(IMP_Z,p)
 
-distribViz <- function(I,TFs){
-    lungh <- lengths(I)
+distribViz <- function(I, TFs) {
+    lungh <- sapply(I, function(x) {
+        length(x)
+    })
     ll = unlist(I)
-    df <- data.frame(importance=ll, TF=rep(TFs,lungh))
-    bp<-boxplot(df$importance ~ df$TF, varwidth =TRUE, par(mar = c(8, 3, 3, 1)),
-                cex.lab=0.6, las=2)
-    title(main='Transcription Factor Importance index distributions')
+    df <- data.frame(importance = ll, TF = rep(TFs, lungh))
+    bp <- boxplot(df$importance ~ df$TF, varwidth = TRUE, par(mar = c(8, 
+        3, 3, 1)), cex.lab = 0.6, las = 2)
+    title(main = "Transcription Factor Importance index distributions")
     return(bp)
 }
