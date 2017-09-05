@@ -30,8 +30,8 @@ For a set of candidate co-regulator transcription factors,
 }
 \examples{
 # Load IMP_Z and p from the data_man collection of datasets:
-data("data_man")
+data('data_man')
 
 # Plot the Importance Index distributions of the transcription factors in p:
-distribViz(IMP_Z,p)
+distribViz(IMP_Z,p_TFs)
 }

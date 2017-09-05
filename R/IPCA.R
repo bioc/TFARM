@@ -28,37 +28,38 @@
 #' @importFrom graphics layout barplot plot title abline box
 #'
 #' @examples
-#' # Load IMP, DELTA and I from the data:man collection of datasets:
-#' data("data_man")
+#' # Load IMP, DELTA and TF_Imp from the data_man collection of datasets:
+#' data('data_man')
 #'
 #' colnames(IMP)
-#' I <- data.frame(IMP$TF, IMP$imp, IMP$nrules)
-#' i.pc <- IPCA(DELTA, I)
+#' TF_Imp <- data.frame(IMP$TF, IMP$imp, IMP$nrules)
+#' i.pc <- IPCA(DELTA, TF_Imp)
 #' names(i.pc)
 
 
-IPCA <- function(delta_list, IMP){
-  DZ_2 <- unlist(delta_list)[which(!is.na(unlist(delta_list)))]
-  Delta_Z_0 <- data.frame(TF=rep(IMP[,1], IMP[,3]),matrix(DZ_2,ncol=3,
-                                                          byrow=TRUE))
-  colnames(Delta_Z_0)[2:4] <- c('delta z_s','delta z_c','delta z_l')
-  Delta_Z <- Delta_Z_0[,2:4]
-  pc.Z <- princomp(Delta_Z, cor = FALSE, scores = TRUE)
-  layout(matrix(c(1,2,3,3,4,4,5,5), 4, 2, byrow = TRUE),
-         heights=c(1,0.6,0.6,0.6))
-  barplot(pc.Z$sdev^2, las=2, main='Variances of the principal components',
-          ylab='Variances', ylim=c(0,90), cex.main=1)
-  plot(cumsum(pc.Z$sdev^2)/sum(pc.Z$sde^2), type='b', axes=TRUE,
-       xlab='number of components', ylab='contribute to total variance')
-  box()
-  title(main='Cumulate variances of the principal components', cex.main=1)
-  scores.Z <- pc.Z$scores
-  load.Z <- pc.Z$loadings
-  for(i in 1:3)
-  {
-    barplot(load.Z[,i], ylim = c(-1, 1), ylab=paste('Comp.', i, sep=''))
-    abline(h=0)
-    if (i == 1) title(main='Loadings of the principal components')
-  }
-  return(list("summary"=summary(pc.Z),"scores"=scores.Z,"loadings"=load.Z))
+IPCA <- function(delta_list, IMP) {
+    DZ_2 <- unlist(delta_list)[which(!is.na(unlist(delta_list)))]
+    Delta_Z_0 <- data.frame(TF = rep(IMP[, 1], IMP[, 3]), matrix(DZ_2,
+                                                                 ncol = 3, byrow = TRUE))
+    colnames(Delta_Z_0)[2:4] <- c("delta z_s", "delta z_c", "delta z_l")
+    Delta_Z <- Delta_Z_0[, 2:4]
+    pc.Z <- princomp(Delta_Z, cor = FALSE, scores = TRUE)
+    layout(matrix(c(1, 2, 3, 3, 4, 4, 5, 5), 4, 2, byrow = TRUE), heights = c(1,
+                                                                              0.6, 0.6, 0.6))
+    barplot(pc.Z$sdev^2, las = 2, main = "Variances of the principal components",
+            ylab = "Variances", ylim = c(0, 90), cex.main = 1)
+    plot(cumsum(pc.Z$sdev^2)/sum(pc.Z$sde^2), type = "b", axes = TRUE,
+         xlab = "number of components", ylab = "contribute to total variance")
+    box()
+    title(main = "Cumulate variances of the principal components", cex.main = 1)
+    scores.Z <- pc.Z$scores
+    load.Z <- pc.Z$loadings
+    for (i in 1:3) {
+        barplot(load.Z[, i], ylim = c(-1, 1), ylab = paste("Comp.", i,
+                                                           sep = ""))
+        abline(h = 0)
+        if (i == 1)
+            title(main = "Loadings of the principal components")
+    }
+    return(list(summary = summary(pc.Z), scores = scores.Z, loadings = load.Z))
 }

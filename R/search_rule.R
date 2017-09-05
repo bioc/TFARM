@@ -13,25 +13,24 @@
 #' @export
 #' @import arules
 
-search_rule <- function(data, LHS, RHS){
+search_rule <- function(data, LHS, RHS) {
 
     m <- dim(data)[2]
     data.f <- data
     # Transactions extraction
     for (i in 1:m) {
-        data.f[,i] <- as.factor(data.f[,i])
+        data.f[, i] <- as.factor(data.f[, i])
     }
     # Rules extraction
-    rule <- apriori(data.f, parameter=list(supp=0, conf=0, target="rules"),
-                    appearance=list(lhs=items(LHS), rhs=RHS, default="none"))
-    if (length(rule) ==  0) {
+    rule <- apriori(data.f, parameter = list(supp = 0, conf = 0, target = "rules"),
+                    appearance = list(lhs = items(LHS), rhs = RHS, default = "none"))
+    if (length(rule) == 0) {
         print("Rule not found")
         r <- NA
-    }
-    else if (length(rule) > 0) {
-        r_0 = data.frame(lhs = labels(lhs(rule)),
-                         rhs = labels(rhs(rule)), rule@quality)
-        r <- r_0[r_0$lhs==LHS,]
+    } else if (length(rule) > 0) {
+        r_0 = data.frame(lhs = labels(lhs(rule)), rhs = labels(rhs(rule)),
+                         rule@quality)
+        r <- r_0[r_0$lhs == LHS, ]
         if (dim(r)[1] == 0) {
             print("Rule not found")
             r <- NA
@@ -39,4 +38,3 @@ search_rule <- function(data, LHS, RHS){
     }
     return(r)
 }
-

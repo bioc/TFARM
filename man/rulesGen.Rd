@@ -43,14 +43,14 @@ to extract a limited number of most relevant association rules.
 }
 \examples{
 # Load the dataset:
-data("MCF7_chr1")
+data('MCF7_chr1')
 
 # To extract association rules from data, with TEAD4=1 in the right-hand-side
 # and support greater than 0.005 and confidence greater than 0.62:
-# r_TEAD4 <- rulesGen(data, "TEAD4=1", minsupp=0.005, minconf=0.62,
+# r_TEAD4 <- rulesGen(data, 'TEAD4=1', minsupp=0.005, minconf=0.62,
 #                     type=TRUE)
 
-r_TEAD4 <- rulesGen(MCF7_chr1, "TEAD4=1", 0.005, 0.62, TRUE)
+r_TEAD4 <- rulesGen(MCF7_chr1, 'TEAD4=1', 0.005, 0.62, TRUE)
 
 }
 \seealso{

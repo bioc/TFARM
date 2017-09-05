@@ -24,10 +24,10 @@ importance of the couple (red), or high mean importance of the
 couple (white).
 }
 \examples{
-# Load p and I_c_2 from the data_man collection of datasets:
-data("data_man")
+# Load p_TFs and I_c_2 from the data_man collection of datasets:
+data('data_man')
 
 # Heatmap visualization of the mean importances of transcription factors in p
 # and their combinations in two elements:
-heatI(p, I_c_2)
+heatI(p_TFs, I_c_2)
 }

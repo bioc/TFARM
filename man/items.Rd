@@ -18,6 +18,6 @@ The function is used in the elaboration of the left-hand-side of
 association rules to search for the items.
 }
 \examples{
-items("{TAF1=1,EP300=1,MAX=1}")
-# the output is: "TAF1=1","EP300=1","MAX=1"
+items('{TAF1=1,EP300=1,MAX=1}')
+# the output is: 'TAF1=1','EP300=1','MAX=1'
 }

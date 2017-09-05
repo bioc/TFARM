@@ -33,9 +33,9 @@ set of association rules.
 \examples{
 library(GenomicRanges)
 # Load r_TEAD4 from the data_man collection of datasets:
-data("data_man")
+data('data_man')
 # Load MCF7_chr1:
-data("MCF7_chr1")
+data('MCF7_chr1')
 
 # Transcription factors present in at least one of the regions
 # in the considered dataset:
@@ -44,6 +44,6 @@ c <- names(elementMetadata(MCF7_chr1))
 names(presAbs(c, r_TEAD4, TRUE))
 
 # Transcription factors present in at least one of the association rules:
-p <- presAbs(c, r_TEAD4, TRUE)$pres
-p
+p_TFs <- presAbs(c, r_TEAD4, TRUE)$pres
+p_TFs
 }

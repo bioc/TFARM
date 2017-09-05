@@ -24,9 +24,9 @@
 #' @examples
 #' library(GenomicRanges)
 #' # Load r_TEAD4 from the data_man collection of datasets:
-#' data("data_man")
+#' data('data_man')
 #' # Load MCF7_chr1:
-#' data("MCF7_chr1")
+#' data('MCF7_chr1')
 #'
 #' # Transcription factors present in at least one of the regions
 #' # in the considered dataset:
@@ -35,27 +35,29 @@
 #' names(presAbs(c, r_TEAD4, TRUE))
 #'
 #' # Transcription factors present in at least one of the association rules:
-#' p <- presAbs(c, r_TEAD4, TRUE)$pres
-#' p
+#' p_TFs <- presAbs(c, r_TEAD4, TRUE)$pres
+#' p_TFs
 
 
-presAbs = function(TFs, rules, type){
-  TFs_1 <- sapply(TFs, paste0, "=1")
-  TFs_0 <- sapply(TFs, paste0, "=0")
-  TFs_v <- c(TFs_1,TFs_0)
-  # To find TFs present in at least one rule
-  all_io <- paste(as.vector(rules[,1]), collapse = " ")
-  ALL_pres <- sapply(TFs_v, function(x){length(grep(x, all_io))})
-  if (type == 'TRUE'){
-      pp <- as.vector(TFs_1[ALL_pres>0])
-      aa <- as.vector(TFs_1[!TFs_1%in%pp])
-  }
-  else {
-  # Present TFs:
-  pp <- TFs_v[ALL_pres>0]
-  # Absent TFs:
-  aa <- TFs_v[!TFs_v%in%pp]}
-  return(list("pres"=pp,"abs"=aa))
+presAbs = function(TFs, rules, type) {
+    TFs_1 <- sapply(TFs, paste0, "=1")
+    TFs_0 <- sapply(TFs, paste0, "=0")
+    TFs_v <- c(TFs_1, TFs_0)
+    # To find TFs present in at least one rule
+    all_io <- paste(as.vector(rules[, 1]), collapse = " ")
+    ALL_pres <- sapply(TFs_v, function(x) {
+        length(grep(x, all_io))
+    })
+    if (type == "TRUE") {
+        pp <- as.vector(TFs_1[ALL_pres > 0])
+        aa <- as.vector(TFs_1[!TFs_1 %in% pp])
+    } else {
+        # Present TFs:
+        pp <- TFs_v[ALL_pres > 0]
+        # Absent TFs:
+        aa <- TFs_v[!TFs_v %in% pp]
+    }
+    return(list(pres = pp, abs = aa))
 }
 
 

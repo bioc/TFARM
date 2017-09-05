@@ -35,11 +35,11 @@ if in the 1D reference system defined by such linear combination,
 it is possible to describe the variability of the data.
 }
 \examples{
-# Load IMP, DELTA and I from the data:man collection of datasets:
-data("data_man")
+# Load IMP, DELTA and TF_Imp from the data_man collection of datasets:
+data('data_man')
 
 colnames(IMP)
-I <- data.frame(IMP$TF, IMP$imp, IMP$nrules)
-i.pc <- IPCA(DELTA, I)
+TF_Imp <- data.frame(IMP$TF, IMP$imp, IMP$nrules)
+i.pc <- IPCA(DELTA, TF_Imp)
 names(i.pc)
 }

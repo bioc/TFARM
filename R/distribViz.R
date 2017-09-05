@@ -25,7 +25,7 @@
 #' data('data_man')
 #'
 #' # Plot the Importance Index distributions of the transcription factors in p:
-#' distribViz(IMP_Z,p)
+#' distribViz(IMP_Z,p_TFs)
 
 distribViz <- function(I, TFs) {
     lungh <- sapply(I, function(x) {
@@ -33,8 +33,8 @@ distribViz <- function(I, TFs) {
     })
     ll = unlist(I)
     df <- data.frame(importance = ll, TF = rep(TFs, lungh))
-    bp <- boxplot(df$importance ~ df$TF, varwidth = TRUE, par(mar = c(8, 
-        3, 3, 1)), cex.lab = 0.6, las = 2)
+    bp <- boxplot(df$importance ~ df$TF, varwidth = TRUE, par(mar = c(8,
+                                                                      3, 3, 1)), cex.lab = 0.6, las = 2)
     title(main = "Transcription Factor Importance index distributions")
     return(bp)
 }

@@ -46,8 +46,8 @@ such variations by setting the parameter \code{figures = TRUE}.
 }
 \examples{
 # Load r_FOSL2 and r_noFOSL2 from the data_man collection of datasets:
-data("data_man")
+data('data_man')
 
 # The Importance Indexes of FOSL2=1 in the set of rules r_FOSL2 are given by:
-IComp("FOSL2=1", r_FOSL2, r_noFOSL2, figures=TRUE)
+IComp('FOSL2=1', r_FOSL2, r_noFOSL2, figures=TRUE)
 }

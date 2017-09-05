@@ -10,17 +10,17 @@
 #' @export
 #'
 #' @examples
-#' itemset(c("TAF1=1","EP300=1"))
-#' # the output is: "TAF1=1,EP300=1"
+#' itemset(c('TAF1=1','EP300=1'))
+#' # the output is: 'TAF1=1,EP300=1'
 
 
-itemset <- function(items){
-    itemset.0 <- paste("{",items[1],sep="")
-    if (length(items) > 1){
-        for (i in 2:length(items)){
-            itemset.0 <- paste(itemset.0,items[i],sep=",")
-            }
+itemset <- function(items) {
+    itemset.0 <- paste("{", items[1], sep = "")
+    tails <- tail(items, -1)
+    for (i in 1:length(tails)) {
+        itemset.0 <- paste(itemset.0, tails[i], sep = ",")
     }
-	itemset.1 <- paste(itemset.0,"}",sep="")
-	return(itemset.1)
+
+    itemset.1 <- paste(itemset.0, "}", sep = "")
+    return(itemset.1)
 }

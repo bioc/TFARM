@@ -10,12 +10,12 @@
 #' @import stringr
 #'
 #' @examples
-#' items("{TAF1=1,EP300=1,MAX=1}")
-#' # the output is: "TAF1=1","EP300=1","MAX=1"
+#' items('{TAF1=1,EP300=1,MAX=1}')
+#' # the output is: 'TAF1=1','EP300=1','MAX=1'
 
-items <- function(itemset){
-  items.0 <- gsub("[:{:]", "", itemset)
-  items.1 <- gsub("[:}:]", "", items.0)
-  items <- strsplit(items.1, ",")
-  return(items[[1]])
+items <- function(itemset) {
+    items.0 <- gsub("[:{:]", "", itemset)
+    items.1 <- gsub("[:}:]", "", items.0)
+    items <- strsplit(items.1, ",")
+    return(items[[1]])
 }

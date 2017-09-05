@@ -18,6 +18,6 @@ The function is used in the construction of the left-hand-side of association
 rules to search for a rule of interest.
 }
 \examples{
-itemset(c("TAF1=1","EP300=1"))
-# the output is: "TAF1=1,EP300=1"
+itemset(c('TAF1=1','EP300=1'))
+# the output is: 'TAF1=1,EP300=1'
 }

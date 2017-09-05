@@ -14,8 +14,9 @@ of transcription factors) wanted in the left-hand-side of the rules to find.}
 \item{rules}{a data.frame with association rules and their quality measures
 of support, confidence and lift.}
 
-\item{verbose}{a logical parameter. If \code{verbose = TRUE}, a console
-message warns the user when the set of rules containing \code{TFi} is empty.}
+\item{verbose}{a logical parameter. If \code{verbose = TRUE}, a warning
+message is reported to the user when the set of rules containing \code{TFi}
+is empty.}
 }
 \value{
 A data.frame with association rules containing \code{TFi} in their
@@ -29,8 +30,8 @@ of the importance distribution of \code{TFi}.
 }
 \examples{
 # Load r_TEAD4 from the data_man collection of datasets:
-data("data_man")
+data('data_man')
 
-r_FOSL2 <- rulesTF("FOSL2=1", r_TEAD4, verbose=FALSE)
+r_FOSL2 <- rulesTF('FOSL2=1', r_TEAD4, verbose=FALSE)
 
 }
