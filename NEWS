@@ -1,0 +1,9 @@
+
+		   CHANGES IN TFARM VERSION 0.99.5
+
+MAJOR CORRECTIONS
+
+  o two datasets were renamed (from I to TF_Imp and from p to p_TFs)
+
+  o some loops were vectorized in the vignettes
+
