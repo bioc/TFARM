@@ -3,3 +3,7 @@
 .RData
 TFARM.Rproj
 README.md
+build
+inst/doc/*.R
+inst/doc/*.pdf
+inst/doc/*.Rnw
