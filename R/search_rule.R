@@ -23,7 +23,8 @@ search_rule <- function(data, LHS, RHS) {
     }
     # Rules extraction
     rule <- apriori(data.f, parameter = list(supp = 0, conf = 0, target = "rules"),
-                    appearance = list(lhs = items(LHS), rhs = RHS, default = "none"))
+                    appearance = list(lhs = items(LHS), rhs = RHS, default = "none"),
+                    control = list(sort = 2, verbose = FALSE))
     if (length(rule) == 0) {
         print("Rule not found")
         r <- NA
