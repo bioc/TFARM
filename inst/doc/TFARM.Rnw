@@ -17,7 +17,6 @@
 
 \definecolor{bronze}{rgb}{0.93, 0.53, 0.18}
 \definecolor{darkblue}{rgb}{0, 0.3, 0.6}
-\SetKw{align}{\color{darkblue}Alignment:}
 \SetKw{template}{Template:}
 \SetKw{assign}{Assignment:}
 \SetKw{norm}{Normalization:}

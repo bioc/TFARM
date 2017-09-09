@@ -19,4 +19,4 @@ biocViews: BiologicalQuestion, Infrastructure, StatisticalMethod,
 LazyData: TRUE
 RoxygenNote: 6.0.1
 NeedsCompilation: no
-Packaged: 2017-09-07 10:37:23 UTC; gaiac
+Packaged: 2017-09-09 20:48:51 UTC; gaiac

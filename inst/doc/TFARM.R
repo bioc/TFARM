@@ -25,7 +25,7 @@ library(GenomicRanges)
 
 
 ###################################################
-### code chunk number 4: TFARM.Rnw:76-82
+### code chunk number 4: TFARM.Rnw:75-81
 ###################################################
 # Load and visualize the dataset:
 
@@ -36,7 +36,7 @@ MCF7_chr1
 
 
 ###################################################
-### code chunk number 5: TFARM.Rnw:136-149
+### code chunk number 5: TFARM.Rnw:135-148
 ###################################################
 # Coming back to the example on the transcription factors of cell line MCF-7,
 # in the promotorial regions of chromosome 1.
@@ -54,7 +54,7 @@ head(r_TEAD4)
 
 
 ###################################################
-### code chunk number 6: TFARM.Rnw:166-184
+### code chunk number 6: TFARM.Rnw:165-183
 ###################################################
 # Transcription factors present in at least one of the regions in the considered dataset:
 
@@ -77,7 +77,7 @@ a
 
 
 ###################################################
-### code chunk number 7: TFARM.Rnw:309-315
+### code chunk number 7: TFARM.Rnw:308-314
 ###################################################
 # To find the subset of rules containing the transcription factor FOSL2:
 
@@ -88,7 +88,7 @@ dim(r_FOSL2)[1]
 
 
 ###################################################
-### code chunk number 8: TFARM.Rnw:319-324
+### code chunk number 8: TFARM.Rnw:318-323
 ###################################################
 # If none of the rules in input to rulesTF contains the given item TFi,
 # and verbose = TRUE, a warnig message is reported to the user:
@@ -98,7 +98,7 @@ r_CTCF <- rulesTF(TFi = 'CTCF=1', rules = r_TEAD4, verbose = TRUE)
 
 
 ###################################################
-### code chunk number 9: TFARM.Rnw:339-343
+### code chunk number 9: TFARM.Rnw:338-342
 ###################################################
 # For example to evaluate FOSL2 importance in the set of rules r_FOSL2:
 
@@ -107,7 +107,7 @@ r_noFOSL2 <- rulesTF0('FOSL2=1', r_FOSL2, r_TEAD4, MCF7_chr1, "TEAD4=1")
 
 
 ###################################################
-### code chunk number 10: TFARM.Rnw:346-348
+### code chunk number 10: TFARM.Rnw:345-347
 ###################################################
 head(r_noFOSL2)
 
@@ -130,7 +130,7 @@ head(imp_FOSL2$rwo)
 
 
 ###################################################
-### code chunk number 12: TFARM.Rnw:391-413
+### code chunk number 12: TFARM.Rnw:390-412
 ###################################################
 # For the considered example the user could run:
 
@@ -157,7 +157,7 @@ for (i in 1:length(p_TFs)) {
 
 
 ###################################################
-### code chunk number 13: TFARM.Rnw:416-423
+### code chunk number 13: TFARM.Rnw:415-422
 ###################################################
 
 # Sort by imp column of IMP
@@ -198,7 +198,7 @@ distribViz(IMP_Z, p_TFs)
 
 
 ###################################################
-### code chunk number 16: TFARM.Rnw:532-553
+### code chunk number 16: TFARM.Rnw:531-552
 ###################################################
 # Select the index of the list of importances IMP_Z
 # containing importance distributions of transcription factor ZNF217
@@ -224,7 +224,7 @@ all[[ZNF217_index]]$rwo[o,]
 
 
 ###################################################
-### code chunk number 17: TFARM.Rnw:585-593
+### code chunk number 17: TFARM.Rnw:584-592
 ###################################################
 # Construct couples as a vector in which all possible combinations of
 # transcription factors (present in at least one association rules)
@@ -237,7 +237,7 @@ head(couples)
 
 
 ###################################################
-### code chunk number 18: TFARM.Rnw:596-624
+### code chunk number 18: TFARM.Rnw:595-623
 ###################################################
 # The evaluation of the mean Importance Index of each pair is
 # then computed similarly as previously done for single transcription factors:
@@ -270,7 +270,7 @@ colnames(I_c) <- colnames(IMP[,1:2])
 
 
 ###################################################
-### code chunk number 19: TFARM.Rnw:627-633
+### code chunk number 19: TFARM.Rnw:626-632
 ###################################################
 # Select rows with mean Importance Index different from NaN, then order I_c:
 
