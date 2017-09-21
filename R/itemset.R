@@ -16,11 +16,15 @@
 
 itemset <- function(items) {
     itemset.0 <- paste("{", items[1], sep = "")
-    tails <- tail(items, -1)
-    for (i in 1:length(tails)) {
-        itemset.0 <- paste(itemset.0, tails[i], sep = ",")
+    if (length(items) != 1) {
+        tails <- tail(items, -1)
+        for (i in 1:length(tails)) {
+            itemset.0 <- paste(itemset.0, tails[i], sep = ",")
+        }
+        itemset.1 <- paste(itemset.0, "}", sep = "")
+        return(itemset.1)
+    } else {
+        itemset.2 <- paste(itemset.0, "}", sep = "")
+        return(itemset.2)
     }
-
-    itemset.1 <- paste(itemset.0, "}", sep = "")
-    return(itemset.1)
 }
