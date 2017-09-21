@@ -34,8 +34,6 @@ heatI <- function(TFs, I) {
     aa <- t(sapply(I[, 1], estract))
     matrix_imp <- matrix(0, l, l)
     pos <- apply(aa == 1, 1, function(x) which(x)[1:2])
-    matrix_imp[cbind(pos[1, which(is.na(pos[2, ]))], pos[1, which(is.na(pos[2,
-                                                                            ]))])] <- I[which(is.na(pos[2, ])), "imp"]
     matrix_imp[cbind(pos[1, which(!is.na(pos[2, ]))], pos[2, which(!is.na(pos[2,
                                                                               ]))])] <- I[which(!is.na(pos[2, ])), "imp"]
     matrix_imp[cbind(pos[2, which(!is.na(pos[2, ]))], pos[1, which(!is.na(pos[2,
