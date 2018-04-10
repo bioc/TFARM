@@ -61,15 +61,15 @@ IComp <- function(TFi, rules_TF, rules_noTF, figures) {
             vars <- vapply(both[, index], var, numeric(1))
             means <- vapply(both[, index], mean, numeric(1))
             for (i in index) {
-                Z[, i] <- (both[, i] - means[which(index == i)])/sqrt(vars[which(index ==
-                                                                                     i)])
+                if (sqrt(vars[which(index ==i)])!=0){
+                    Z[, i] <- (both[, i] - means[which(index == i)])/sqrt(vars[which(index==i)])
+                } else{
+                    Z[, i] <- (both[, i] - means[which(index == i)])  
+                } 
             }
-            Z[, index[which(vars == 0)]] <- both[, index[which(vars ==
-                                                                   0)]]
         }
     }
-
-
+    
     # matrix of variations of the standardized measures
     Z <- data.frame(Z)
     colnames(Z) <- colnames(both)
