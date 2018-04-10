@@ -47,11 +47,12 @@
 
 
 rulesTF0 <- function(TFi, sub_rules, all_rules, data, RHS){
-
+    
     # Selection of the Indicator of presence matrix, where other values
     # different from 0 are considered as representing presence and are set to 1
     data<-as.data.frame(elementMetadata(data))
     1->data[data!=0]
+    
     # Analysis on the Indicator of presence matrix
     if(length(TFi) == 1) {TF_i <- TFi}
     if(length(TFi) > 1) {
@@ -60,11 +61,11 @@ rulesTF0 <- function(TFi, sub_rules, all_rules, data, RHS){
             TF_i<- paste(TF_i, TFi[[i]], sep=',')
     }
     K <- length(items(TF_i))
-
+    
     TF_vp <- paste("", items(TF_i), sep=",")
     TF_vd <- paste(items(TF_i), "", sep=",")
-
-
+    
+    
     # substitute "TF=1" with "TF=0"
     # case with 1 TF
     if (length(items(TFi)) == 1) {
@@ -75,8 +76,8 @@ rulesTF0 <- function(TFi, sub_rules, all_rules, data, RHS){
             return(r)
         })
     }
-
-
+    
+    
     # case with 2 or more TF
     else {
         rule_noTF <- lapply(sub_rules$lhs, function(x){
@@ -89,10 +90,10 @@ rulesTF0 <- function(TFi, sub_rules, all_rules, data, RHS){
             return(r)
         })
     }
-
+    
     # inverse function of items
     subs_noTF <- lapply(rule_noTF, itemset)
-
+    
     n_subs_2 <- length(subs_noTF)
     n_all <- dim(all_rules)[1]
     all_noTF <- matrix(0, n_subs_2, 5)
@@ -101,28 +102,18 @@ rulesTF0 <- function(TFi, sub_rules, all_rules, data, RHS){
     all_noTF$lhs <- paste(as.vector(subs_noTF))
     all_noTF$rhs <- sub_rules$rhs
     for (i in 1:n_subs_2){
-        b <- items(subs_noTF[i])
-        for (j in 1:n_all){
-            a <- items(all_rules$lhs[j])
-            if (all(a %in% b)){
-                all_noTF[i,3:5] <- all_rules[j,c(3,4,5)]
-                all_noTF[i,2] <- paste(all_rules[j,2])
-            }
-        }
-        if (all(all_noTF[i,c(3,4,5)] == 0)) {
-            out <- search_rule(data, subs_noTF[i], RHS)
-            if ((length(out) == 1 && is.na(out)) || (length(out) > 1 &&
-                                                     all(out == 'NA'))){
-                all_noTF[i,1] <- paste(subs_noTF[i])
-                all_noTF[i,2] <- paste("{", "}", sep=RHS)
-                all_noTF[i,3:5] <- c(0,0,0)
-            }
-            else {
-                all_noTF[i,1] <- paste(out$lhs)
-                all_noTF[i,2] <- paste(out$rhs)
-                all_noTF[i,3:5] <- search_rule(data, subs_noTF[i], RHS)[3:5]
-            }
+        out <- search_rule(data, subs_noTF[i], RHS)
+        if ((length(out) == 1 && is.na(out)) || (length(out) > 1 &&
+                                                 all(out == 'NA'))){
+            all_noTF[i,1] <- paste(subs_noTF[i])
+            all_noTF[i,2] <- paste("{", "}", sep=RHS)
+            all_noTF[i,3:5] <- c(0,0,0)
+        }else {
+            all_noTF[i,1] <- paste(out$lhs)
+            all_noTF[i,2] <- paste(out$rhs)
+            all_noTF[i,3:5] <- search_rule(data, subs_noTF[i], RHS)[3:5]
         }
     }
+    
     return(all_noTF)
 }
