@@ -9,10 +9,9 @@
 #' for the obtained rules and their quality measures of
 #' support, confidence and lift in the set of most relevant associations
 #' extracted with the function \code{\link{rulesGen}}.
-#' If a rule is not found in such set, it is searched in all the association
+#' A rule is searched in all the association
 #' rules generable from the considered dataset using the function
-#' \code{\link{search_rule}}. If a rule is not found in the set of all
-#' the association rules, its quality measures are set to 0.
+#' \code{\link{search_rule}}.
 #'
 #' @param TFi a string, or a string vector: transcription factor
 #' (or combination of transcription factors) to remove from the set of rules.

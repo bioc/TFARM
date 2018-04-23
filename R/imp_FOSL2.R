@@ -1,9 +1,11 @@
 #' Contains the set of Importance Indexes of FOSL2 in a given set of rules.
 #'
-#' Within the \code{data_man} data collection, imp_FOSL2 is a list of 2 elements,
+#' Within the \code{data_man} data collection, imp_FOSL2 is a list of 4 elements,
 #' containing \code{imp} as a numeric vector in which the means of Importance
-#' Indexes are represented, and \code{delta} as a data.frame in which the
-#' variations of support, confidence and lift measures are reported.
+#' Indexes are represented, \code{delta} as a data.frame in which the
+#' variations of support and confidence measures are reported, \code{rwi} as a 
+#' data.frame of association rules where FOSL2 is present and \code{rwo} as a
+#' data.frame in which the same rules are considered for FOSL2=0.
 #'
 #' @docType data
 #'
