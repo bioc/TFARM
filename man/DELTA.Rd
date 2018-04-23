@@ -10,9 +10,9 @@ confidence and lift.}
 data("data_man")
 }
 \description{
-DELTA is a list of 12 elements and each element has three columns
-representing support (\code{diff_supp_Z}), confidence (\code{diff_conf_Z})
-and lift (\code{diff_lift_Z}) respectively. It is included in the 
+DELTA is a list of 12 elements and each element has two columns
+representing support (\code{diff_supp_Z}) and confidence (\code{diff_conf_Z})
+respectively. It is included in the 
 \code{data_man} collection.
 }
 \examples{

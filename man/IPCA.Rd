@@ -2,15 +2,15 @@
 % Please edit documentation in R/IPCA.R
 \name{IPCA}
 \alias{IPCA}
-\title{Principal Components Analysis for distributions of variations of support,
-confidence and lift obtained removing a transcription factor
+\title{Principal Components Analysis for distributions of variations of support and 
+confidence obtained removing a transcription factor
 from a set of rules.}
 \usage{
 IPCA(delta_list, IMP)
 }
 \arguments{
-\item{delta_list}{list of variations of standardized distributions
-of support, confidence and lift measures, obtained using the \code{IComp}.}
+\item{delta_list}{list of variations of distributions
+of support and confidence measures, obtained using the \code{IComp}.}
 
 \item{IMP}{the importance matrix with the mean Importance Index
 of every candidate co-regulator transcription factor and the number of rules
@@ -29,7 +29,7 @@ also returned.
 \description{
 The function is used for validation of the defined Importance Index.
 It is defined as the linear combination of variations of
-standardized support, confidence and lift measures.
+support and confidence measures.
 The Principal Component Analysis lets the user evaluate
 if in the 1D reference system defined by such linear combination,
 it is possible to describe the variability of the data.

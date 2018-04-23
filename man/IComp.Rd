@@ -17,23 +17,23 @@ of transcription factors) whose importance distribution is evaluated.}
 the transcription factor (or combination of transcription factors)
 in TFi (obtained with the function \code{\link{rulesTF0}}).}
 
-\item{figures}{logical; if \code{figures = TRUE}, graphics with support,
-lift and confidence distributions of the rules in \code{rulesTF} and
+\item{figures}{logical; if \code{figures = TRUE}, graphics with support
+and confidence distributions of the rules in \code{rulesTF} and
 \code{rulesTF0} are returned.}
 }
 \value{
 A list of four elements: the \code{imp} element is a vector of
 doubles with the importances of TFi in each rule in \code{rulesTF};
 the \code{delta} element of the list is a list with variations of
-standardized distributions of the three measures of support,
-confidence and lift. This output is used in the function \code{\link{IPCA}}
+distributions of the two measures of support and 
+confidence. This output is used in the function \code{\link{IPCA}}
 for the Principal Component Analysis of such distributions. The \code{rwi}
 element is a data.frame with the rules in \code{rulesTF}
-in which the transcription factor \code{TFi} has Importance Index greater
-than one and the \code{rwo} element is a data.frame with rules in \code{rwi}
+in which the transcription factor \code{TFi} is present 
+and the \code{rwo} element is a data.frame with rules in \code{rwi}
 obtained removing the transcription factor \code{TFi}. Furthermore, if the
 input argument \code{figures} is set to TRUE, also the plots of the distributions
-of support, confidence and lift of the rules before and after removing the
+of support and confidence of the rules before and after removing the
 transcription factor TFi are provided.
 }
 \description{
@@ -41,7 +41,7 @@ Given an association rule and a transcription factor \code{TFi},
 it is evaluated the contribution of \code{TFi} in the rule for the prediction
 of the presence of the item in the right-hand-side of the rule.
 Since this contribution is evaluated based on the variations of
-support, confidence and lift of the rule, the user can visualize
+support and confidence of the rule, the user can visualize
 such variations by setting the parameter \code{figures = TRUE}.
 }
 \examples{
