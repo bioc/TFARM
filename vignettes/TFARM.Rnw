@@ -369,7 +369,8 @@ As previously seen, the candidate co-regulators are returned by the function \te
 \bigskip
 <<results="hide">>=
 # For the considered example the user could run:
-
+DELTA_mean_supp <- vector("list", length(p_TFs))
+DELTA_mean_conf <- vector("list", length(p_TFs))
 all <- lapply(p_TFs, function(pi) {
   	A <- rulesTF(pi, r_TEAD4, FALSE)
   	B <- rulesTF0(pi, A, r_TEAD4, MCF7_chr1, "TEAD4=1")
@@ -378,14 +379,17 @@ all <- lapply(p_TFs, function(pi) {
 
 for (i in 1:length(p_TFs)) {
     IMP_Z[[i]] <- all[[i]]$imp
-# Extract the delta variations of support, confidence and lift:
-    DELTA[[i]] <- all[[i]]$delta
+# Extract the delta variations of support and confidence:
+    DELTA_mean_supp[[i]] <- apply(all[[i]]$delta[1], 2, mean)
+    DELTA_mean_conf[[i]] <- apply(all[[i]]$delta[2], 2, mean)
 }
 
   IMP <- data.frame(
       TF = p_TFs,
       imp = sapply(IMP_Z, mean),
       sd = sapply(IMP_Z, sd),
+      delta_support = as.numeric(DELTA_mean_supp),
+      delta_confidence = as.numeric(DELTA_mean_conf),
       nrules = sapply(IMP_Z, length),
       stringsAsFactors=FALSE
   )
