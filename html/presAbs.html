@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Splits a set of transcription factors in 'present' or...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for presAbs {TFARM}"><tr><td>presAbs {TFARM}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Splits a set of transcription factors in 'present' or 'absent'
+transcription factors in a set of rules.</h2>
+
+<h3>Description</h3>
+
+<p>The function is used to find candidate transcription factor co-regulator
+with a given transcription factor, by finding the transcription factors that
+contribute to the prediction of the given trascription factor presence in a
+set of association rules.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+presAbs(TFs, rules, type)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>TFs</code></td>
+<td>
+<p>a string vector: set of transcription factors to check their
+presence (TF=1) or absence (TF=0) in the set of rules.</p>
+</td></tr>
+<tr valign="top"><td><code>rules</code></td>
+<td>
+<p>data.frame: rules and their quality measures.</p>
+</td></tr>
+<tr valign="top"><td><code>type</code></td>
+<td>
+<p>logical parameter: if <code>type = TRUE</code>, only rules with
+all present transcription factors in the left-hand-side are considered
+(i.e., the left-hand-side of the extracted rules is for example
+TF1=1, TF2=1, TF3=1).</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>A list of two string vectors: the list <code>pres</code> contains
+all the transcription factors in <code>TFs</code> that are present in <code>rules</code>,
+and the list <code>abs</code> contains all the transcription factors in <code>TFs</code>
+that are absent in <code>rules</code>.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+library(GenomicRanges)
+# Load r_TEAD4 from the data_man collection of datasets:
+data('data_man')
+# Load MCF7_chr1:
+data('MCF7_chr1')
+
+# Transcription factors present in at least one of the regions
+# in the considered dataset:
+c &lt;- names(elementMetadata(MCF7_chr1))
+
+names(presAbs(c, r_TEAD4, TRUE))
+
+# Transcription factors present in at least one of the association rules:
+p_TFs &lt;- presAbs(c, r_TEAD4, TRUE)$pres
+p_TFs
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>TFARM</em> version 1.1.1 <a href="00Index.html">Index</a>]</div>
+</body></html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Contains the set of Importance Indexes of FOSL2 in a given...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for imp_FOSL2 {TFARM}"><tr><td>imp_FOSL2 {TFARM}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Contains the set of Importance Indexes of FOSL2 in a given set of rules.</h2>
+
+<h3>Description</h3>
+
+<p>Within the <code>data_man</code> data collection, imp_FOSL2 is a list of 4 elements,
+containing <code>imp</code> as a numeric vector in which the means of Importance
+Indexes are represented, <code>delta</code> as a data.frame in which the
+variations of support and confidence measures are reported, <code>rwi</code> as a 
+data.frame of association rules where FOSL2 is present and <code>rwo</code> as a
+data.frame in which the same rules are considered for FOSL2=0.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+data("data_man")
+</pre>
+
+
+<h3>Format</h3>
+
+<p>An object of class <code>"list"</code></p>
+
+
+<h3>Examples</h3>
+
+<pre>
+# imp_FOSL2 is found in the data_man collection of datasets:
+data("data_man")
+head(imp_FOSL2$imp)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>TFARM</em> version 1.1.1 <a href="00Index.html">Index</a>]</div>
+</body></html>

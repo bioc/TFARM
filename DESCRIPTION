@@ -12,7 +12,7 @@ Description: It searches for relevant associations of transcription factors with
   factors (and combinations of transcription factors) in association rules.
 License: Artistic-2.0
 Imports: arules, fields, GenomicRanges, graphics, grDevices, stringr,
-        methods, stats
+        methods, stats, gplots
 VignetteBuilder: knitr
 Suggests: BiocStyle, knitr, plyr
 biocViews: BiologicalQuestion, Infrastructure, StatisticalMethod,
@@ -21,3 +21,4 @@ LazyData: TRUE
 RoxygenNote: 6.0.1
 NeedsCompilation: no
 Packaged: 2017-09-09 20:48:51 UTC; gaiac
+Built: R 3.6.0; ; 2019-06-17 12:44:07 UTC; windows

@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Exctracts relevant association rules.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for rulesGen {TFARM}"><tr><td>rulesGen {TFARM}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Exctracts relevant association rules.</h2>
+
+<h3>Description</h3>
+
+<p>From the dataset in <code>data</code>, the function extracts a set of association
+rules, with a certain item in their right-hand-side. Each rule extracted has
+support greater than <code>minsupp</code> and confidence greater than
+<code>minconf</code>. The extraction is made using the <a href="../../arules/html/apriori.html">apriori</a>
+function implemented in the <code>arules</code> package.
+<code>minsupp</code> and <code>minconf</code> thresholds are set by the user in order
+to extract a limited number of most relevant association rules.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+rulesGen(data, TF, minsupp, minconf, type)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>data</code></td>
+<td>
+<p>a GRanges object in which the metadata columns contain
+the Indicator of presence matrix i.e., a matrix with 1 and 0 values
+representing presence or absence, respectively (in case other values
+different from 0 are present, all of them are considered as representing
+presence).</p>
+</td></tr>
+<tr valign="top"><td><code>TF</code></td>
+<td>
+<p>a string with the name of the trancription factor wanted
+in the right-hand-side of the extracted rules.</p>
+</td></tr>
+<tr valign="top"><td><code>minsupp</code></td>
+<td>
+<p>an integer, the minimal support of the extracted rules.</p>
+</td></tr>
+<tr valign="top"><td><code>minconf</code></td>
+<td>
+<p>an integer, the minimal confidence of the extracted rules.</p>
+</td></tr>
+<tr valign="top"><td><code>type</code></td>
+<td>
+<p>a logical parameter; if <code>type = TRUE</code>, only rules with
+all present transcription factor in the left-hand-side are extracted
+(i.e., the left-hand-side of the extracted rules is of the
+type TF1=1, TF2=1, TF3=1). If <code>type = FALSE</code>, also rules with absent
+transcription factors in the left-hand-side are extracted
+(i.e., the left-hand-side of the extracted rules can be of the type
+TF1=1, TF2=0, TF3=1 or TF1=0, TF2=0, TF3=0).</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>A data frame with the association rules extracted and their
+quality measures of support, confidence and lift.
+</p>
+
+
+<h3>See Also</h3>
+
+<p><a href="../../arules/html/apriori.html">apriori</a>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+# Load the dataset:
+data('MCF7_chr1')
+
+# To extract association rules from data, with TEAD4=1 in the right-hand-side
+# and support greater than 0.005 and confidence greater than 0.62:
+# r_TEAD4 &lt;- rulesGen(data, 'TEAD4=1', minsupp=0.005, minconf=0.62,
+#                     type=TRUE)
+
+r_TEAD4 &lt;- rulesGen(MCF7_chr1, 'TEAD4=1', 0.005, 0.62, TRUE)
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>TFARM</em> version 1.1.1 <a href="00Index.html">Index</a>]</div>
+</body></html>
