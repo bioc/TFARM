@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Extracts a subset of rules that contain a certain...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for rulesTF {TFARM}"><tr><td>rulesTF {TFARM}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Extracts a subset of rules that contain a certain transcription factor
+(or a combination of transcription factors) in their left-hand-side.</h2>
+
+<h3>Description</h3>
+
+<p>From a set of relevant association rules, only the ones containing <code>TFi</code>
+in their left-hand-side are subsetted, together with their quality measures
+of support, confidence and lift. The function is then used for the evaluation
+of the importance distribution of <code>TFi</code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+rulesTF(TFi, rules, verbose)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>TFi</code></td>
+<td>
+<p>a string with the name of the transcription factor (or combination
+of transcription factors) wanted in the left-hand-side of the rules to find.</p>
+</td></tr>
+<tr valign="top"><td><code>rules</code></td>
+<td>
+<p>a data.frame with association rules and their quality measures
+of support, confidence and lift.</p>
+</td></tr>
+<tr valign="top"><td><code>verbose</code></td>
+<td>
+<p>a logical parameter. If <code>verbose = TRUE</code>, a warning
+message is reported to the user when the set of rules containing <code>TFi</code>
+is empty.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>A data.frame with association rules containing <code>TFi</code> in their
+left-hand-side, with their quality measures of support, confidence and lift.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+# Load r_TEAD4 from the data_man collection of datasets:
+data('data_man')
+
+r_FOSL2 &lt;- rulesTF('FOSL2=1', r_TEAD4, verbose=FALSE)
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>TFARM</em> version 1.1.1 <a href="00Index.html">Index</a>]</div>
+</body></html>

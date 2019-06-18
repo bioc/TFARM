@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Visualizes with boxplots the Importance Index distribution of...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for distribViz {TFARM}"><tr><td>distribViz {TFARM}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Visualizes with boxplots the Importance Index distribution
+of a set of transcription factors.</h2>
+
+<h3>Description</h3>
+
+<p>For a set of candidate co-regulator transcription factors,
+the Importance Index distribution of each transcription factor
+is plotted in boxplots. The shape of every boxplot depends on:
+the dimension of the distribution, which is equal to the number of rules
+in which every transcription factor appears (the higher is such number,
+the larger is a boxplot), the variability of the distribution
+(the higher is the variability of the Importance Index distribution,
+the longer is a boxplot). Moreover, the higher is the median of
+the Importance Index distribution for a candidate co-regulator
+transcription factor, the higher the boxplot is aligned with respect to
+the y axis.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+distribViz(I, TFs)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>I</code></td>
+<td>
+<p>a list of Importance Index distributions (IIDs)</p>
+</td></tr>
+<tr valign="top"><td><code>TFs</code></td>
+<td>
+<p>string vector with the names of the transcription factors</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>A boxplot representing the transcription factor IIDs
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+# Load IMP_Z and p from the data_man collection of datasets:
+data('data_man')
+
+# Plot the Importance Index distributions of the transcription factors in p:
+distribViz(IMP_Z,p_TFs)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>TFARM</em> version 1.1.1 <a href="00Index.html">Index</a>]</div>
+</body></html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Computes the Importance Index of a transcription factor in a...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for IComp {TFARM}"><tr><td>IComp {TFARM}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Computes the Importance Index of a transcription factor
+in a set of association rules.</h2>
+
+<h3>Description</h3>
+
+<p>Given an association rule and a transcription factor <code>TFi</code>,
+it is evaluated the contribution of <code>TFi</code> in the rule for the prediction
+of the presence of the item in the right-hand-side of the rule.
+Since this contribution is evaluated based on the variations of
+support and confidence of the rule, the user can visualize
+such variations by setting the parameter <code>figures = TRUE</code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+IComp(TFi, rules_TF, rules_noTF, figures)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>TFi</code></td>
+<td>
+<p>string or string vector: the transcription factor (or combination
+of transcription factors) whose importance distribution is evaluated.</p>
+</td></tr>
+<tr valign="top"><td><code>rules_TF</code></td>
+<td>
+<p>a set of rules in which <code>TFi</code> is present.</p>
+</td></tr>
+<tr valign="top"><td><code>rules_noTF</code></td>
+<td>
+<p>a set of rules obtained from rules_TF removing
+the transcription factor (or combination of transcription factors)
+in TFi (obtained with the function <code><a href="rulesTF0.html">rulesTF0</a></code>).</p>
+</td></tr>
+<tr valign="top"><td><code>figures</code></td>
+<td>
+<p>logical; if <code>figures = TRUE</code>, graphics with support
+and confidence distributions of the rules in <code>rulesTF</code> and
+<code>rulesTF0</code> are returned.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>A list of four elements: the <code>imp</code> element is a vector of
+doubles with the importances of TFi in each rule in <code>rulesTF</code>;
+the <code>delta</code> element of the list is a list with variations of
+distributions of the two measures of support and 
+confidence. This output is used in the function <code><a href="IPCA.html">IPCA</a></code>
+for the Principal Component Analysis of such distributions. The <code>rwi</code>
+element is a data.frame with the rules in <code>rulesTF</code>
+in which the transcription factor <code>TFi</code> is present 
+and the <code>rwo</code> element is a data.frame with rules in <code>rwi</code>
+obtained removing the transcription factor <code>TFi</code>. Furthermore, if the
+input argument <code>figures</code> is set to TRUE, also the plots of the distributions
+of support and confidence of the rules before and after removing the
+transcription factor TFi are provided.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+# Load r_FOSL2 and r_noFOSL2 from the data_man collection of datasets:
+data('data_man')
+
+# The Importance Indexes of FOSL2=1 in the set of rules r_FOSL2 are given by:
+IComp('FOSL2=1', r_FOSL2, r_noFOSL2, figures=TRUE)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>TFARM</em> version 1.1.1 <a href="00Index.html">Index</a>]</div>
+</body></html>
