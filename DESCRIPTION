@@ -1,7 +1,7 @@
 Package: TFARM
 Type: Package
 Title: Transcription Factors Association Rules Miner
-Version: 1.26.0
+Version: 1.27.0
 Date: 2021-11-21
 Depends: R (>= 3.4)
 Author: Liuba Nausicaa Martino, Alice Parodi, Gaia Ceddia, Piercesare Secchi, Stefano Campaner, Marco Masseroli 
